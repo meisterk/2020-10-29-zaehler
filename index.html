@@ -8,7 +8,34 @@
 </head>
 
 <body>
-    <h1>Zähler</h1>
+    <div id="zaehl-app">
+        <h1>Zähler</h1>
+        <button @click="hochzaehlen">Hochzählen</button>
+        <button @click="reset">Reset</button>
+        <p>{{ ausgabe }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const ZaehlApp = {
+            data() {
+                return {
+                    zaehler: 0,
+                    ausgabe: '0'
+                };
+            },
+            methods: {
+                hochzaehlen() {
+                    this.zaehler++;
+                    this.ausgabe = this.zaehler;
+                },
+                reset() {
+                    this.zaehler = 0;
+                    this.ausgabe = this.zaehler;
+                }
+            }
+        };
+        Vue.createApp(ZaehlApp).mount('#zaehl-app');
+    </script>
 </body>
 
 </html>
